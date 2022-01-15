@@ -5,5 +5,10 @@
   "repository": "https://github.com/galbeiroc/react-ecosystem.git",
   "author": "galbeiroc",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7"
+  }
 }
