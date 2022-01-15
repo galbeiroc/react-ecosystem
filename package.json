@@ -1,0 +1,9 @@
+{
+  "name": "react-ecosystem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/galbeiroc/react-ecosystem.git",
+  "author": "galbeiroc",
+  "license": "MIT",
+  "private": true
+}
