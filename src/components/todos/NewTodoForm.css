@@ -1,0 +1,27 @@
+.new-todo-form {
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px grey;
+}
+
+.new-todo-input {
+  font-size: 14px;
+  width: 70%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  border-radius: 8px;
+}
+
+.new-todo-button {
+  font-size: 14px;
+  background-color: lime;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  width: 20%;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: 20px;
+}
