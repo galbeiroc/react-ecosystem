@@ -4,6 +4,7 @@ import {
   loadTodosFailure,
   createTodo,
   removeTodo,
+  completeTodo,
 } from './actions';
 
 const API_URL = 'http://localhost:8080';
@@ -52,6 +53,19 @@ export const removeTodoRequest = id => async dispatch =>{
     dispatch(displayAlert(error));
   }
 };
+
+export const completeTodoRequest = id => async dispatch => {
+  try {
+    const response = await fetch(`${API_URL}/todos/${id}/completed`, {
+      method: 'post'
+    });
+    const todo = await response.json();
+    dispatch(completeTodo(todo));
+  } catch (error) {
+    dispatch(loadTodosFailure());
+    dispatch(displayAlert(e));
+  }
+}
 
 export const displayAlert = text => () => {
   alert(text);

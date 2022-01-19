@@ -12,9 +12,9 @@ export const removeTodo = todo => ({
   payload: { todo },
 });
 
-export const completeTodo = text => ({
+export const completeTodo = todo => ({
   type: COMPLETE_TODO,
-  payload: { text, isCompleted: true },
+  payload: { todo },
 });
 
 
