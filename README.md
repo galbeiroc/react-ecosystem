@@ -32,12 +32,8 @@ export const todos = (state = [], action) => {
   const { type, payload } = action;
   switch(type) {
     case CREATE_TODO: {
-      const { text } = payload;
-      const newTodo = {
-        text,
-        isCompleted: false
-      }
-      return state.concat(newTodo);
+      const { todo } = payload;
+      return state.concat(todo);
     }
   }
 }
@@ -76,4 +72,21 @@ export const displayAlert = text => () => {
 const mapDispatchToProps = dispatch => ({
   onDisplayedAlert: text => dispatch(displayAlert(text)),
 });
+```
+
+Another exmaple:
+```js
+export const loadTodos = () => async (dispatch, getState) => {
+  try {
+    dispatch(loadTodosInProgress());
+
+    const response = await fetch(`${API_URL}/todos`);
+    const todos = await response.json();
+
+    dispatch(loadTodosSuccess(todos));
+  } catch (error) {
+    dispatch(loadTodosFailure());
+    dispatch(displayAlert(error));
+  }
+};
 ```
