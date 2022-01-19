@@ -5,9 +5,9 @@ import autoMergeLEvel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { todos } from './reducer';
+import { todos, isLoading } from './reducer';
 
-const reducers = { todos };
+const reducers = { todos, isLoading };
 
 const rootReducer = combineReducers(reducers);
 
