@@ -3,6 +3,7 @@ import {
   loadTodosSuccess,
   loadTodosFailure,
   createTodo,
+  removeTodo,
 } from './actions';
 
 const API_URL = 'http://localhost:8080';
@@ -38,6 +39,19 @@ export const addTodoRequest = text => async dispatch => {
     dispatch(displayAlert(error));
   }
 }
+
+export const removeTodoRequest = id => async dispatch =>{
+  try {
+    const response = await fetch(`${API_URL}/todos/${id}`, {
+      method: 'delete'
+    });
+    const todo =  await response.json();
+    dispatch(removeTodo(todo))
+  } catch (error) {
+    dispatch(loadTodosFailure());
+    dispatch(displayAlert(error));
+  }
+};
 
 export const displayAlert = text => () => {
   alert(text);

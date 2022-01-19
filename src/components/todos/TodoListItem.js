@@ -13,7 +13,7 @@ const TodoListItem = ({ todo, onRemoved, onMarkedCompleted }) => (
       )}
       <button
         className="removed-button"
-        onClick={() => onRemoved(todo.text)}
+        onClick={() => onRemoved(todo.id)}
       >
         Remove
       </button>
