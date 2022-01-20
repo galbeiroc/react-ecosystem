@@ -109,3 +109,60 @@ export const getCompleteTodos = createSelector(
 
 ### Styled-components
 Allow us to define styles inside our components
+
+```js
+const TodoListContainer = styled.div`
+  background: #fff;
+  position: relative;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px grey;
+`;
+
+<TodoListContainer>
+....
+</TodoListContainer>
+```
+
+* Pass Props
+```js
+const TodoListContainer = styled.div`
+  background: #fff;
+  position: relative;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px grey;
+  border-bottom: ${props => (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
+    ? 'none'
+    : '2px solid red'
+  )}
+`;
+
+<TodoListContainer createdAt={todo.createdAt}>
+....
+</TodoListContainer>
+```
+* Extends Styles
+```js
+const TodoListContainer = styled.div`
+  background: #fff;
+  position: relative;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px grey;
+`;
+
+const TodoItemContainerWithWarning = styled(TodoListContainer)`
+  border-bottom: ${props => (new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
+    ? 'none'
+    : '2px solid red'
+  )}
+`;
+
+<TodoListContainer createdAt={todo.createdAt}>
+....
+</TodoListContainer>
+```
