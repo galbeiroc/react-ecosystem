@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import {
   completeTodoRequest,
@@ -7,12 +8,19 @@ import {
   removeTodoRequest,
 } from '../../redux/thunk';
 
-import { getTodos, getTodosLoading, getCompleteTodos, getIncompleteTodos } from '../../redux/selector';
+import {
+  getTodosLoading,
+  getCompleteTodos,
+  getIncompleteTodos,
+} from '../../redux/selector';
 
 import NewTodoForm from './NewTodoForm';
 import TodoListItem from "./TodoListItem";
 
-import './TodoList.css';
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
 const TodoList = ({
     completeTodos,
@@ -28,7 +36,7 @@ const TodoList = ({
 
   const isLoadingContent = <div>Loading...</div>;
   const content = (
-    <div className="list-wrapper">
+    <ListWrapper>
       <NewTodoForm />
       <h3>Incomplete Todos</h3>
       {
@@ -50,7 +58,7 @@ const TodoList = ({
           />
         ))
       }
-    </div>
+    </ListWrapper>
   );
 
   return isLoading ? isLoadingContent : content;
