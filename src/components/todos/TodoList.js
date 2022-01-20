@@ -7,6 +7,8 @@ import {
   removeTodoRequest,
 } from '../../redux/thunk';
 
+import { getTodos, getTodosLoading } from '../../redux/selector';
+
 import NewTodoForm from './NewTodoForm';
 import TodoListItem from "./TodoListItem";
 
@@ -43,8 +45,8 @@ const TodoList = ({
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
-  todos: state.todos,
+  isLoading: getTodosLoading(state),
+  todos: getTodos(state),
 });
 
 const mapDispatchToProps = dispatch => ({
