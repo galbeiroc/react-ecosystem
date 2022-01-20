@@ -90,3 +90,19 @@ export const loadTodos = () => async (dispatch, getState) => {
   }
 };
 ```
+
+### Selectors
+Selectors give us a place to put logic for combining, filtering, transforming sotring data.
+Selector are meant to abstract away how data is stored in redux.
+
+```js
+export const getTodos = state => state.todos.data;
+```
+
+* Combine reselect with selectors
+```js
+export const getCompleteTodos = createSelector(
+  getTodos,
+  (todos) => todos.filter(todo => todo.isCompleted),
+);
+```

@@ -7,13 +7,16 @@ import {
   removeTodoRequest,
 } from '../../redux/thunk';
 
+import { getTodos, getTodosLoading, getCompleteTodos, getIncompleteTodos } from '../../redux/selector';
+
 import NewTodoForm from './NewTodoForm';
 import TodoListItem from "./TodoListItem";
 
 import './TodoList.css';
 
 const TodoList = ({
-    todos,
+    completeTodos,
+    inCompleteTodos,
     onRemoved,
     onMarkedCompleted,
     isLoading,
@@ -27,8 +30,19 @@ const TodoList = ({
   const content = (
     <div className="list-wrapper">
       <NewTodoForm />
+      <h3>Incomplete Todos</h3>
       {
-        todos.map((todo) => (
+        inCompleteTodos.map((todo) => (
+          <TodoListItem
+            todo={todo}
+            onRemoved={onRemoved}
+            onMarkedCompleted={onMarkedCompleted}
+          />
+        ))
+      }
+      <h3>Complete Todos</h3>
+      {
+        completeTodos.map((todo) => (
           <TodoListItem
             todo={todo}
             onRemoved={onRemoved}
@@ -43,8 +57,9 @@ const TodoList = ({
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
-  todos: state.todos,
+  isLoading: getTodosLoading(state),
+  completeTodos: getCompleteTodos(state),
+  inCompleteTodos: getIncompleteTodos(state)
 });
 
 const mapDispatchToProps = dispatch => ({
