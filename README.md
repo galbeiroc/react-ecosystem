@@ -106,3 +106,6 @@ export const getCompleteTodos = createSelector(
   (todos) => todos.filter(todo => todo.isCompleted),
 );
 ```
+
+### Styled-components
+Allow us to define styles inside our components

@@ -1,16 +1,23 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import styled from 'styled-components';
 
 import TodoList from './components/todos/TodoList';
 
-import './App.css';
+const AppContainer = styled.div`
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  width: 100vw;
+  height: 100vw;
+`;
 
 const App = () => {
   return (
-    <div className='App'>
+    <AppContainer>
       <h2>Hello, world</h2>
       <TodoList />
-    </div>
+    </AppContainer>
   )
 };
 
